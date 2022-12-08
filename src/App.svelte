@@ -20,7 +20,7 @@
 
   async function sendToBot (message) {
     loading = true;
-		const res = await fetch('http://localhost:3000/api/chatgpt', {
+		const res = await fetch('/api/chatgpt', {
 			method: 'POST',
 			body: JSON.stringify({
 				msg: message,
