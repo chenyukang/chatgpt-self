@@ -51,7 +51,7 @@ async function post_chatgpt(ctx) {
   const timeNow = new Date().getTime();
   let data = timeNow + "\n" + "User: " + msg + "\n" + "ChatGPT: " + response + "\n"
   console.log("data: ", data);
-  fs.writeFile("./run.log", data, (err) => {
+  fs.appendFileSync("./run.log", data, (err) => {
     if (err) {
       // an error occurred
       console.error(err);
