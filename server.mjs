@@ -20,7 +20,6 @@ app.use(bodyParser());
 async function send_chat(message) {
   // sessionToken is required; see below for details
   try {
-    console.log("process.env.SESSION_TOKEN: ", process.env.SESSION_TOKEN);
     const api = new ChatGPTAPI({
       sessionToken: process.env.SESSION_TOKEN
     })
@@ -43,8 +42,6 @@ async function send_chat(message) {
 
 async function post_chatgpt(ctx) {
   const body = ctx.request.body;
-  console.log("ctx: ", ctx);
-  console.log("ctx body: ", ctx.request.body);
   let msg = ctx.request.body['msg'];
   let response = await send_chat(msg);
   // log time and user request and response
