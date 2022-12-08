@@ -38,7 +38,7 @@
       let elem = { "message": json["reply"], "bot": true};
       messages = messages.concat(elem);
     } else {
-      let elem = { "message": "ChaGPT failed replied...", "bot": true};
+      let elem = { "message": "我需要休息一下 ...", "bot": true};
       messages = messages.concat(elem);
     }
     loading = false;

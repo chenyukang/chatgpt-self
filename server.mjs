@@ -36,7 +36,7 @@ async function send_chat(message) {
     return response;
   } catch (e) {
     console.log(e);
-    return "我需要休息一下"
+    return "我需要休息一下 ..."
   }
 }
 
