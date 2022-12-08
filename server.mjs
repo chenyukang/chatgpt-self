@@ -7,6 +7,9 @@ import serve from 'koa-static';
 import { ChatGPTAPI } from 'chatgpt'
 import bodyParser from 'koa-bodyparser';
 import dotenv from 'dotenv-safe'
+import fs from 'fs';
+import { time } from 'console';
+
 dotenv.config()
 
 const app = new Koa();
@@ -42,7 +45,21 @@ async function post_chatgpt(ctx) {
   const body = ctx.request.body;
   console.log("ctx: ", ctx);
   console.log("ctx body: ", ctx.request.body);
-  let response = await send_chat(ctx.request.body['msg']);
+  let msg = ctx.request.body['msg'];
+  let response = await send_chat(msg);
+  // log time and user request and response
+  const timeNow = new Date().getTime();
+  let data = timeNow + "\n" + "User: " + msg + "\n" + "ChatGPT: " + response + "\n"
+  console.log("data: ", data);
+  fs.writeFile("./run.log", data, (err) => {
+    if (err) {
+      // an error occurred
+      console.error(err);
+    } else {
+      // the file was written successfully
+      console.log('The file was written successfully.');
+    }
+  });
   ctx.body = { reply: response };
   ctx.status = 200
 }

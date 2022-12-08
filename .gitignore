@@ -2,4 +2,5 @@
 /public/build/
 .env.example
 .env
+*.log
 .DS_Store

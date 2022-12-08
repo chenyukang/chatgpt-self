@@ -64,7 +64,7 @@
 
           {/each}
           {#if loading}
-            <Jumper size="60" color="#FF3E00" unit="px" duration="1s" />
+            <Jumper size="60" color="#FF3E00" unit="px" duration="2s" />
           {/if}
       </div>
 
